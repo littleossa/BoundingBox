@@ -11,7 +11,7 @@ struct BoundingBox<Content: View>: View {
     
     @Binding var editingWidth: CGFloat
     @Binding var editingHeight: CGFloat
-    var isFreeForm = false
+    var isFreeForm = true
     private let content: Content
     
     init(editingWidth: Binding<CGFloat>,
@@ -25,9 +25,13 @@ struct BoundingBox<Content: View>: View {
     var body: some View {
         
         ZStack {
+            content
+            
             MovingDashFramedRectangle()
             
             EditPointsView { value in
+                guard editingWidth + value.scaleValue > 0 && editingHeight + value.scaleValue > 0
+                else { return }
                 if isFreeForm {
                     editingWidth += value.scaleSize.width
                     editingHeight += value.scaleSize.height
@@ -36,8 +40,6 @@ struct BoundingBox<Content: View>: View {
                     editingHeight += value.scaleValue
                 }
             }
-            content
-                .frame(width: editingWidth, height: editingHeight)
         }
         .frame(width: editingWidth, height: editingHeight)
     }

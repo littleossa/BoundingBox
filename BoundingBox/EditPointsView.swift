@@ -20,7 +20,7 @@ struct EditPointsView: View {
         case bottomRight(translation: CGSize)
         
         var scaleSize: CGSize {
-                        
+            
             switch self {
             case .topLeft(let translation):
                 return CGSize(width: translation.width * -1,
@@ -50,7 +50,7 @@ struct EditPointsView: View {
         }
         
         var scaleValue: CGFloat {
-                        
+            
             switch self {
             case .topLeft, .topRight, .middleLeft, .middleRight, .bottomLeft, .bottomRight:
                 return self.scaleSize.width
