@@ -12,6 +12,8 @@
 		9741118927FE707A002A95E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9741118827FE707A002A95E8 /* Assets.xcassets */; };
 		9741118C27FE707A002A95E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9741118B27FE707A002A95E8 /* Preview Assets.xcassets */; };
 		9741119427FF8818002A95E8 /* MovingDashFramedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9741119327FF8818002A95E8 /* MovingDashFramedRectangle.swift */; };
+		9741119627FF8AF5002A95E8 /* EditPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9741119527FF8AF5002A95E8 /* EditPoint.swift */; };
+		9741119827FF8E75002A95E8 /* EditingPointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9741119727FF8E75002A95E8 /* EditingPointsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		9741118B27FE707A002A95E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9741119227FF2167002A95E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9741119327FF8818002A95E8 /* MovingDashFramedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingDashFramedRectangle.swift; sourceTree = "<group>"; };
+		9741119527FF8AF5002A95E8 /* EditPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPoint.swift; sourceTree = "<group>"; };
+		9741119727FF8E75002A95E8 /* EditingPointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingPointsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				9741118427FE7078002A95E8 /* BoundingBoxApp.swift */,
 				9741118627FE7078002A95E8 /* ContentView.swift */,
 				9741119327FF8818002A95E8 /* MovingDashFramedRectangle.swift */,
+				9741119727FF8E75002A95E8 /* EditingPointsView.swift */,
+				9741119527FF8AF5002A95E8 /* EditPoint.swift */,
 				9741118827FE707A002A95E8 /* Assets.xcassets */,
 				9741118A27FE707A002A95E8 /* Preview Content */,
 			);
@@ -142,8 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9741119827FF8E75002A95E8 /* EditingPointsView.swift in Sources */,
 				9741118727FE7078002A95E8 /* ContentView.swift in Sources */,
 				9741118527FE7078002A95E8 /* BoundingBoxApp.swift in Sources */,
+				9741119627FF8AF5002A95E8 /* EditPoint.swift in Sources */,
 				9741119427FF8818002A95E8 /* MovingDashFramedRectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

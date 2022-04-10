@@ -9,8 +9,33 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        BoundingBox(width: 150, height: 400) {
+            Text("")
+        }
+    }
+}
+
+struct BoundingBox<Content: View>: View {
+    
+    let width: CGFloat
+    let height: CGFloat
+    var content: Content
+    
+    init(width: CGFloat, height: CGFloat, @ViewBuilder _ content: () -> Content) {
+        self.width = width
+        self.height = height
+        self.content = content()
+    }
+    
+    var body: some View {
+        
+        ZStack {
+            MovingDashFramedRectangle()
+            EditingPointsView()
+            content
+        }
+        .frame(width: width, height: height)
     }
 }
 
