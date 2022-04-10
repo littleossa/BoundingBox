@@ -71,13 +71,9 @@ struct EditPointsView: View {
     }
     
     private let dragOnChangePointHandler: (_ value: EditPointPlace.Value) -> Void
-    private let dragOnEndedPointHandler: (_ place: EditPointPlace, _ value: DragGesture.Value) -> Void
     
-    init(onChange onChangeHandler: @escaping (_ value: EditPointPlace.Value) -> Void,
-         onEnded onEndedHandler: @escaping (_ place: EditPointPlace,
-                            _ value: DragGesture.Value) -> Void) {
+    init(onChange onChangeHandler: @escaping (_ value: EditPointPlace.Value) -> Void) {
         self.dragOnChangePointHandler = onChangeHandler
-        self.dragOnEndedPointHandler = onEndedHandler
     }
     
     var body: some View {
@@ -88,31 +84,25 @@ struct EditPointsView: View {
             // ⬆️ Top edit points
             //
             HStack {
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.topLeft(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.topLeft, value)
-                })
+                }
                 .offset(x: -5, y: 0)
                 
                 Spacer()
                 
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.topCenter(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.topCenter, value)
-                })
+                }
                 
                 Spacer()
                 
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.topRight(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.topRight, value)
-                })
+                }
                 .offset(x: 5, y: 0)
             }
             .offset(x: 0, y: -5)
@@ -123,22 +113,18 @@ struct EditPointsView: View {
             // ↔️ Middle edit points
             //
             HStack {
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.middleLeft(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.middleLeft, value)
-                })
+                }
                 .offset(x: -5, y: 0)
                 
                 Spacer()
                 
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.middleRight(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.middleRight, value)
-                })
+                }
                 .offset(x: 5, y: 0)
             }
             
@@ -148,31 +134,25 @@ struct EditPointsView: View {
             // ⬇️ Bottom Edit points
             //
             HStack {
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.bottomLeft(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.bottomLeft, value)
-                })
+                }
                 .offset(x: -5, y: 0)
                 
                 Spacer()
                 
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.bottomCenter(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.bottomCenter, value)
-                })
+                }
                 
                 Spacer()
                 
-                EditPoint(dragOnChange: { value in
+                EditPoint { value in
                     let editPointPlace = EditPointPlace.bottomRight(translation: value.translation)
                     dragOnChangePointHandler(editPointPlace.value)
-                }, dragOnEnded: { value in
-//                    dragOnEndedPointHandler(EditPointPlace.bottomRight, value)
-                })
+                }
                 .offset(x: 5, y: 0)
             }
             .offset(x: 0, y: 5)
@@ -184,7 +164,7 @@ struct EditingPointsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             MovingDashFramedRectangle()
-            EditPointsView { _ in} onEnded: { _, _ in}
+            EditPointsView { _ in}
         }
         .frame(width: 100, height: 100)
     }

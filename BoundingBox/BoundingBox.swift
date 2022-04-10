@@ -35,10 +35,7 @@ struct BoundingBox<Content: View>: View {
                     editingWidth += value.scaleValue
                     editingHeight += value.scaleValue
                 }
-            } onEnded: { place, value in
-                print(place)
             }
-
             content
                 .frame(width: editingWidth, height: editingHeight)
         }
