@@ -9,17 +9,6 @@ import SwiftUI
 
 struct EditPointsView: View {
     
-    enum EditPointPlace {
-        case topLeft
-        case topCenter
-        case topRight
-        case middleLeft
-        case middleRight
-        case bottomLeft
-        case bottomCenter
-        case bottomRight
-    }
-    
     private let dragOnChangePointHandler: (_ place: EditPointPlace, _ value: DragGesture.Value) -> Void
     private let dragOnEndedPointHandler: (_ place: EditPointPlace, _ value: DragGesture.Value) -> Void
     
