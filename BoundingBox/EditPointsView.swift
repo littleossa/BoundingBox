@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditingPointsView: View {
+struct EditPointsView: View {
         
     var body: some View {
         
@@ -30,7 +30,13 @@ struct EditingPointsView: View {
                 
                 Spacer()
                 
-                EditPoint(dragOnChange: { _ in
+                EditPoint(dragOnChange: { value in
+                    if value.startLocation.equalTo(value.location) {
+                        return
+                    }
+                    if value.startLocation.x < value.location.x {
+                        print("x")
+                    }
                     print("onChange")
                 }, dragOnEnded: { _ in
                     print("onEnded")
@@ -95,7 +101,7 @@ struct EditingPointsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             MovingDashFramedRectangle()
-            EditingPointsView()
+            EditPointsView()
         }
         .frame(width: 100, height: 100)
     }
