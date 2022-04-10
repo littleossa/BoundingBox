@@ -10,57 +10,75 @@ import SwiftUI
 struct EditPointsView: View {
     
     enum EditPointPlace {
-        case topLeft
-        case topCenter
-        case topRight
-        case middleLeft
-        case middleRight
-        case bottomLeft
-        case bottomCenter
-        case bottomRight
+        case topLeft(translation: CGSize)
+        case topCenter(translation: CGSize)
+        case topRight(translation: CGSize)
+        case middleLeft(translation: CGSize)
+        case middleRight(translation: CGSize)
+        case bottomLeft(translation: CGSize)
+        case bottomCenter(translation: CGSize)
+        case bottomRight(translation: CGSize)
         
-        func scaleSize(with translation: CGSize) -> CGSize {
+        var scaleSize: CGSize {
                         
-            print(translation)
             switch self {
-            case .topLeft:
+            case .topLeft(let translation):
                 return CGSize(width: translation.width * -1,
                               height: translation.height * -1)
-            case .topCenter:
+            case .topCenter(let translation):
                 return CGSize(width: 0,
                               height: translation.height * -1)
-            case .topRight:
+            case .topRight(let translation):
                 return CGSize(width: translation.width,
                               height: translation.height * -1)
-            case .middleLeft:
+            case .middleLeft(let translation):
                 return CGSize(width: translation.width * -1,
                               height: 0)
-            case .middleRight:
+            case .middleRight(let translation):
                 return CGSize(width: translation.width,
                               height: 0)
-            case .bottomLeft:
+            case .bottomLeft(let translation):
                 return CGSize(width: translation.width * -1,
                               height: translation.height)
-            case .bottomCenter:
+            case .bottomCenter(let translation):
                 return CGSize(width: 0,
                               height: translation.height)
-            case .bottomRight:
+            case .bottomRight(let translation):
                 return CGSize(width: translation.width,
                               height: translation.height)
             }
         }
+        
+        var scaleValue: CGFloat {
+                        
+            switch self {
+            case .topLeft, .topRight, .middleLeft, .middleRight, .bottomLeft, .bottomRight:
+                return self.scaleSize.width
+            case .topCenter, .bottomCenter:
+                return self.scaleSize.height
+            }
+        }
+        
+        var value: EditPointPlace.Value {
+            EditPointPlace.Value(scaleValue: scaleValue,
+                                 scaleSize: scaleSize)
+        }
+        
+        struct Value {
+            let scaleValue: CGFloat
+            let scaleSize: CGSize
+        }
     }
     
-    private let dragOnChangePointHandler: (_ scaleSize: CGSize) -> Void
+    private let dragOnChangePointHandler: (_ value: EditPointPlace.Value) -> Void
     private let dragOnEndedPointHandler: (_ place: EditPointPlace, _ value: DragGesture.Value) -> Void
     
-    init(onChange onChangeHandler: @escaping (_ scaleSize: CGSize) -> Void,
+    init(onChange onChangeHandler: @escaping (_ value: EditPointPlace.Value) -> Void,
          onEnded onEndedHandler: @escaping (_ place: EditPointPlace,
                             _ value: DragGesture.Value) -> Void) {
         self.dragOnChangePointHandler = onChangeHandler
         self.dragOnEndedPointHandler = onEndedHandler
     }
-    
     
     var body: some View {
         
@@ -71,26 +89,29 @@ struct EditPointsView: View {
             //
             HStack {
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.topLeft.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.topLeft(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.topLeft, value)
+//                    dragOnEndedPointHandler(EditPointPlace.topLeft, value)
                 })
                 .offset(x: -5, y: 0)
                 
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.topCenter.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.topCenter(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.topCenter, value)
+//                    dragOnEndedPointHandler(EditPointPlace.topCenter, value)
                 })
                 
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.topRight.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.topRight(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.topRight, value)
+//                    dragOnEndedPointHandler(EditPointPlace.topRight, value)
                 })
                 .offset(x: 5, y: 0)
             }
@@ -103,18 +124,20 @@ struct EditPointsView: View {
             //
             HStack {
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.middleLeft.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.middleLeft(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.middleLeft, value)
+//                    dragOnEndedPointHandler(EditPointPlace.middleLeft, value)
                 })
                 .offset(x: -5, y: 0)
                 
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.middleRight.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.middleRight(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.middleRight, value)
+//                    dragOnEndedPointHandler(EditPointPlace.middleRight, value)
                 })
                 .offset(x: 5, y: 0)
             }
@@ -126,26 +149,29 @@ struct EditPointsView: View {
             //
             HStack {
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.bottomLeft.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.bottomLeft(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.bottomLeft, value)
+//                    dragOnEndedPointHandler(EditPointPlace.bottomLeft, value)
                 })
                 .offset(x: -5, y: 0)
                 
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.bottomCenter.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.bottomCenter(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.bottomCenter, value)
+//                    dragOnEndedPointHandler(EditPointPlace.bottomCenter, value)
                 })
                 
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.bottomRight.scaleSize(with: value.translation))
+                    let editPointPlace = EditPointPlace.bottomRight(translation: value.translation)
+                    dragOnChangePointHandler(editPointPlace.value)
                 }, dragOnEnded: { value in
-                    dragOnEndedPointHandler(EditPointPlace.bottomRight, value)
+//                    dragOnEndedPointHandler(EditPointPlace.bottomRight, value)
                 })
                 .offset(x: 5, y: 0)
             }
