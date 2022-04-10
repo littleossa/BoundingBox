@@ -16,7 +16,8 @@ struct ContentView: View {
         
         BoundingBox(editingWidth: $width,
                     andHeight: $height) {
-            Text("Contents")
+            Image(systemName: "circle")
+                .resizable()
         }
     }
 }

@@ -20,24 +20,33 @@ struct EditPointsView: View {
         case bottomRight
         
         func scaleSize(with translation: CGSize) -> CGSize {
+                        
+            print(translation)
             switch self {
             case .topLeft:
-                return CGSize()
+                return CGSize(width: translation.width * -1,
+                              height: translation.height * -1)
             case .topCenter:
-                return CGSize()
+                return CGSize(width: 0,
+                              height: translation.height * -1)
             case .topRight:
                 return CGSize(width: translation.width,
                               height: translation.height * -1)
             case .middleLeft:
-                return CGSize()
+                return CGSize(width: translation.width * -1,
+                              height: 0)
             case .middleRight:
-                return CGSize()
+                return CGSize(width: translation.width,
+                              height: 0)
             case .bottomLeft:
-                return CGSize()
+                return CGSize(width: translation.width * -1,
+                              height: translation.height)
             case .bottomCenter:
-                return CGSize()
+                return CGSize(width: 0,
+                              height: translation.height)
             case .bottomRight:
-                return CGSize()
+                return CGSize(width: translation.width,
+                              height: translation.height)
             }
         }
     }

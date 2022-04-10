@@ -34,6 +34,7 @@ struct BoundingBox<Content: View>: View {
             }
 
             content
+                .frame(width: editingWidth, height: editingHeight)
         }
         .frame(width: editingWidth, height: editingHeight)
     }
