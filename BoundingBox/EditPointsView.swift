@@ -35,6 +35,10 @@ struct EditPointsView: View {
     var body: some View {
         
         VStack {
+            
+            //
+            // ⬆️ Top edit points
+            //
             HStack {
                 EditPoint(dragOnChange: { value in
                     dragOnChangePointHandler(EditPointPlace.topLeft, value)
@@ -64,6 +68,9 @@ struct EditPointsView: View {
             
             Spacer()
             
+            //
+            // ↔️ Middle edit points
+            //
             HStack {
                 EditPoint(dragOnChange: { value in
                     dragOnChangePointHandler(EditPointPlace.middleLeft, value)
@@ -84,6 +91,9 @@ struct EditPointsView: View {
             
             Spacer()
             
+            //
+            // ⬇️ Bottom Edit points
+            //
             HStack {
                 EditPoint(dragOnChange: { value in
                     dragOnChangePointHandler(EditPointPlace.bottomLeft, value)
