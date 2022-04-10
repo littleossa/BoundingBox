@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var width: CGFloat = 150
+    @State private var height: CGFloat = 400
+    
     var body: some View {
         
-        BoundingBox(width: 150, height: 400) {
-            Text("")
+        BoundingBox(editingWidth: $width,
+                    andHeight: $height) {
+            Text("Contents")
         }
     }
 }

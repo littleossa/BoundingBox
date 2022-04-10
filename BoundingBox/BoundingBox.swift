@@ -9,13 +9,15 @@ import SwiftUI
 
 struct BoundingBox<Content: View>: View {
     
-    let width: CGFloat
-    let height: CGFloat
+    @Binding var editingWidth: CGFloat
+    @Binding var editingHeight: CGFloat
     var content: Content
     
-    init(width: CGFloat, height: CGFloat, @ViewBuilder _ content: () -> Content) {
-        self.width = width
-        self.height = height
+    init(editingWidth: Binding<CGFloat>,
+         andHeight editingHeight: Binding<CGFloat>,
+         @ViewBuilder _ content: () -> Content) {
+        self._editingWidth = editingWidth
+        self._editingHeight = editingHeight
         self.content = content()
     }
     
@@ -23,6 +25,7 @@ struct BoundingBox<Content: View>: View {
         
         ZStack {
             MovingDashFramedRectangle()
+            
             EditPointsView { place, value in
                 print(place)
             } onEnded: { place, value in
@@ -31,13 +34,14 @@ struct BoundingBox<Content: View>: View {
 
             content
         }
-        .frame(width: width, height: height)
+        .frame(width: editingWidth, height: editingHeight)
     }
 }
 
 struct BoundingBox_Previews: PreviewProvider {
     static var previews: some View {
-        BoundingBox(width: 150, height: 400) {
+        BoundingBox(editingWidth: .constant(100),
+                    andHeight: .constant(100)) {
             Text("contents")
         }
     }
