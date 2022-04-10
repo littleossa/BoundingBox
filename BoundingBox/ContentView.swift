@@ -16,29 +16,6 @@ struct ContentView: View {
     }
 }
 
-struct BoundingBox<Content: View>: View {
-    
-    let width: CGFloat
-    let height: CGFloat
-    var content: Content
-    
-    init(width: CGFloat, height: CGFloat, @ViewBuilder _ content: () -> Content) {
-        self.width = width
-        self.height = height
-        self.content = content()
-    }
-    
-    var body: some View {
-        
-        ZStack {
-            MovingDashFramedRectangle()
-            EditPointsView()
-            content
-        }
-        .frame(width: width, height: height)
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
