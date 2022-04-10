@@ -26,8 +26,9 @@ struct BoundingBox<Content: View>: View {
         ZStack {
             MovingDashFramedRectangle()
             
-            EditPointsView { place, value in
-                print(place)
+            EditPointsView { scaleSize in
+                editingWidth += scaleSize.width
+                editingHeight += scaleSize.height
             } onEnded: { place, value in
                 print(place)
             }

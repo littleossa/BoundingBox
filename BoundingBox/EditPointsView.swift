@@ -9,11 +9,43 @@ import SwiftUI
 
 struct EditPointsView: View {
     
-    private let dragOnChangePointHandler: (_ place: EditPointPlace, _ value: DragGesture.Value) -> Void
+    enum EditPointPlace {
+        case topLeft
+        case topCenter
+        case topRight
+        case middleLeft
+        case middleRight
+        case bottomLeft
+        case bottomCenter
+        case bottomRight
+        
+        func scaleSize(with translation: CGSize) -> CGSize {
+            switch self {
+            case .topLeft:
+                return CGSize()
+            case .topCenter:
+                return CGSize()
+            case .topRight:
+                return CGSize(width: translation.width,
+                              height: translation.height * -1)
+            case .middleLeft:
+                return CGSize()
+            case .middleRight:
+                return CGSize()
+            case .bottomLeft:
+                return CGSize()
+            case .bottomCenter:
+                return CGSize()
+            case .bottomRight:
+                return CGSize()
+            }
+        }
+    }
+    
+    private let dragOnChangePointHandler: (_ scaleSize: CGSize) -> Void
     private let dragOnEndedPointHandler: (_ place: EditPointPlace, _ value: DragGesture.Value) -> Void
     
-    init(onChange onChangeHandler: @escaping (_ place: EditPointPlace,
-                             _ value: DragGesture.Value) -> Void,
+    init(onChange onChangeHandler: @escaping (_ scaleSize: CGSize) -> Void,
          onEnded onEndedHandler: @escaping (_ place: EditPointPlace,
                             _ value: DragGesture.Value) -> Void) {
         self.dragOnChangePointHandler = onChangeHandler
@@ -30,7 +62,7 @@ struct EditPointsView: View {
             //
             HStack {
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.topLeft, value)
+                    dragOnChangePointHandler(EditPointPlace.topLeft.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.topLeft, value)
                 })
@@ -39,7 +71,7 @@ struct EditPointsView: View {
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.topCenter, value)
+                    dragOnChangePointHandler(EditPointPlace.topCenter.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.topCenter, value)
                 })
@@ -47,7 +79,7 @@ struct EditPointsView: View {
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.topRight, value)
+                    dragOnChangePointHandler(EditPointPlace.topRight.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.topRight, value)
                 })
@@ -62,7 +94,7 @@ struct EditPointsView: View {
             //
             HStack {
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.middleLeft, value)
+                    dragOnChangePointHandler(EditPointPlace.middleLeft.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.middleLeft, value)
                 })
@@ -71,7 +103,7 @@ struct EditPointsView: View {
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.middleRight, value)
+                    dragOnChangePointHandler(EditPointPlace.middleRight.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.middleRight, value)
                 })
@@ -85,7 +117,7 @@ struct EditPointsView: View {
             //
             HStack {
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.bottomLeft, value)
+                    dragOnChangePointHandler(EditPointPlace.bottomLeft.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.bottomLeft, value)
                 })
@@ -94,7 +126,7 @@ struct EditPointsView: View {
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.bottomCenter, value)
+                    dragOnChangePointHandler(EditPointPlace.bottomCenter.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.bottomCenter, value)
                 })
@@ -102,7 +134,7 @@ struct EditPointsView: View {
                 Spacer()
                 
                 EditPoint(dragOnChange: { value in
-                    dragOnChangePointHandler(EditPointPlace.bottomRight, value)
+                    dragOnChangePointHandler(EditPointPlace.bottomRight.scaleSize(with: value.translation))
                 }, dragOnEnded: { value in
                     dragOnEndedPointHandler(EditPointPlace.bottomRight, value)
                 })
@@ -117,7 +149,7 @@ struct EditingPointsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             MovingDashFramedRectangle()
-            EditPointsView { _, _ in} onEnded: { _, _ in}
+            EditPointsView { _ in} onEnded: { _, _ in}
         }
         .frame(width: 100, height: 100)
     }
