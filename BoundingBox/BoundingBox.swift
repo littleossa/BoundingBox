@@ -34,24 +34,27 @@ struct BoundingBox<Content: View>: View {
             ZStack {
                 content
                 
-                MovingDashFramedRectangle()
-                
-                EditPointsView { value in
+                if isEditing {
                     
-                    switch formType {
-                    case .freeForm:
-                        guard editingWidth + value.scaleSize.width > 0 && editingHeight + value.scaleSize.height > 0
-                        else { return }
+                    MovingDashFramedRectangle()
+                    
+                    EditPointsView { value in
                         
-                        editingWidth += value.scaleSize.width
-                        editingHeight += value.scaleSize.height
-                        
-                    case .uniform:
-                        guard editingWidth + value.scaleValue > 0 && editingHeight + value.scaleValue > 0
-                        else { return }
-                        
-                        editingWidth += value.scaleValue
-                        editingHeight += value.scaleValue
+                        switch formType {
+                        case .freeForm:
+                            guard editingWidth + value.scaleSize.width > 0 && editingHeight + value.scaleSize.height > 0
+                            else { return }
+                            
+                            editingWidth += value.scaleSize.width
+                            editingHeight += value.scaleSize.height
+                            
+                        case .uniform:
+                            guard editingWidth + value.scaleValue > 0 && editingHeight + value.scaleValue > 0
+                            else { return }
+                            
+                            editingWidth += value.scaleValue
+                            editingHeight += value.scaleValue
+                        }
                     }
                 }
             }

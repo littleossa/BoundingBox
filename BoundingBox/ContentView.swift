@@ -16,12 +16,29 @@ struct ContentView: View {
     
     var body: some View {
         
-        BoundingBox(editingWidth: $width,
-                    andHeight: $height,
-        formType: $formType,
-        isEditing: $isEditing) {
-            Image(systemName: "circle")
-                .resizable()
+        ZStack {
+            
+            VStack {
+                Button {
+                    isEditing.toggle()
+                } label: {
+                    Text("Edit切り替え")
+                }
+
+                Spacer()
+            }
+            
+            BoundingBox(editingWidth: $width,
+                        andHeight: $height,
+            formType: $formType,
+            isEditing: $isEditing) {
+                Image(systemName: "circle")
+                    .resizable()
+            }
+            
+            if isEditing {
+                EditOptionsView(formType: $formType)
+            }
         }
     }
 }
