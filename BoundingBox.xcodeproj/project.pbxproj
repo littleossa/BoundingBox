@@ -16,6 +16,7 @@
 		9741119827FF8E75002A95E8 /* EditPointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9741119727FF8E75002A95E8 /* EditPointsView.swift */; };
 		9741119C2802FCB3002A95E8 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9741119B2802FCB3002A95E8 /* BoundingBox.swift */; };
 		974111A02803E6BD002A95E8 /* EditPointScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9741119F2803E6BD002A95E8 /* EditPointScaling.swift */; };
+		974111A22803F07F002A95E8 /* EditFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974111A12803F07F002A95E8 /* EditFormType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9741119727FF8E75002A95E8 /* EditPointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointsView.swift; sourceTree = "<group>"; };
 		9741119B2802FCB3002A95E8 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		9741119F2803E6BD002A95E8 /* EditPointScaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointScaling.swift; sourceTree = "<group>"; };
+		974111A12803F07F002A95E8 /* EditFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				9741119227FF2167002A95E8 /* Info.plist */,
 				9741118427FE7078002A95E8 /* BoundingBoxApp.swift */,
 				9741119F2803E6BD002A95E8 /* EditPointScaling.swift */,
+				974111A12803F07F002A95E8 /* EditFormType.swift */,
 				9741118627FE7078002A95E8 /* ContentView.swift */,
 				9741119B2802FCB3002A95E8 /* BoundingBox.swift */,
 				9741119327FF8818002A95E8 /* MovingDashFramedRectangle.swift */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				974111A02803E6BD002A95E8 /* EditPointScaling.swift in Sources */,
+				974111A22803F07F002A95E8 /* EditFormType.swift in Sources */,
 				9741119827FF8E75002A95E8 /* EditPointsView.swift in Sources */,
 				9741118727FE7078002A95E8 /* ContentView.swift in Sources */,
 				9741118527FE7078002A95E8 /* BoundingBoxApp.swift in Sources */,

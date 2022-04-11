@@ -10,12 +10,16 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var width: CGFloat = 150
-    @State private var height: CGFloat = 400
+    @State private var height: CGFloat = 150
+    @State private var formType: EditFormType = .freeForm
+    @State private var isEditing = true
     
     var body: some View {
         
         BoundingBox(editingWidth: $width,
-                    andHeight: $height) {
+                    andHeight: $height,
+        formType: $formType,
+        isEditing: $isEditing) {
             Image(systemName: "circle")
                 .resizable()
         }
