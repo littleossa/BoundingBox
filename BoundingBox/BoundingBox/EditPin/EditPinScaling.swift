@@ -2,12 +2,10 @@
 //  EditPointScaling.swift
 //  BoundingBox
 //
-//  Created by 平岡修 on 2022/04/11.
-//
 
 import CoreGraphics
 
-struct EditPointScaling {
+struct EditPinScaling {
     
     enum EditPointPlace {
         case topLeft
@@ -31,8 +29,8 @@ struct EditPointScaling {
     }
     
     /// Return EditPointDragGesture.Value with DragGesture.Value.translation
-    var value: EditPointScaling.Value {
-        return EditPointScaling.Value(scaleValue: self.scaleValue,
+    var value: EditPinScaling.Value {
+        return EditPinScaling.Value(scaleValue: self.scaleValue,
                                       scaleSize: self.scaleSize)
     }
     
