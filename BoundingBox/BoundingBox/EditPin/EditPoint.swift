@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditPin: View {
+struct EditPoint: View {
     
     let dragOnChangeHandler: (_ value: DragGesture.Value) -> Void
     
@@ -34,6 +34,6 @@ struct EditPin: View {
 
 struct EditPoint_Previews: PreviewProvider {
     static var previews: some View {
-        EditPin {_ in}
+        EditPoint {_ in}
     }
 }

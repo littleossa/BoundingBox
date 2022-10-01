@@ -5,9 +5,9 @@
 
 import SwiftUI
 
-struct BoundingBoxPins: View {
+struct EditPointsFramedRectangle: View {
     
-    let dragOnChangePinHandler: (_ value: EditPinScaling.Value) -> Void
+    let dragOnChangePinHandler: (_ value: EditPointScaling.Value) -> Void
     
     var body: some View {
         
@@ -17,8 +17,8 @@ struct BoundingBoxPins: View {
             // ⬆️ Top edit points
             //
             HStack {
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .topLeft).value
                     dragOnChangePinHandler(scalingValue)
                 }
@@ -26,16 +26,16 @@ struct BoundingBoxPins: View {
                 
                 Spacer()
                 
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .topCenter).value
                     dragOnChangePinHandler(scalingValue)
                 }
                 
                 Spacer()
                 
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .topRight).value
                     dragOnChangePinHandler(scalingValue)
                 }
@@ -49,8 +49,8 @@ struct BoundingBoxPins: View {
             // ↔️ Middle edit points
             //
             HStack {
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .middleLeft).value
                     dragOnChangePinHandler(scalingValue)
                 }
@@ -58,8 +58,8 @@ struct BoundingBoxPins: View {
                 
                 Spacer()
                 
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .middleRight).value
                     dragOnChangePinHandler(scalingValue)
                 }
@@ -72,8 +72,8 @@ struct BoundingBoxPins: View {
             // ⬇️ Bottom Edit points
             //
             HStack {
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .bottomLeft).value
                     dragOnChangePinHandler(scalingValue)
                 }
@@ -81,16 +81,16 @@ struct BoundingBoxPins: View {
                 
                 Spacer()
                 
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .bottomCenter).value
                     dragOnChangePinHandler(scalingValue)
                 }
                 
                 Spacer()
                 
-                EditPin { value in
-                    let scalingValue = EditPinScaling(with: value.translation,
+                EditPoint { value in
+                    let scalingValue = EditPointScaling(with: value.translation,
                                                         at: .bottomRight).value
                     dragOnChangePinHandler(scalingValue)
                 }
@@ -105,7 +105,7 @@ struct BoundingBoxPins_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             MovingDashFramedRectangle()
-            BoundingBoxPins { _ in}
+            EditPointsFramedRectangle { _ in}
         }
         .frame(width: 100, height: 100)
     }

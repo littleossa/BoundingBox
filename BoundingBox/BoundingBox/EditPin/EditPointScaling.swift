@@ -5,7 +5,7 @@
 
 import CoreGraphics
 
-struct EditPinScaling {
+struct EditPointScaling {
     
     enum EditPointPlace {
         case topLeft
@@ -29,8 +29,8 @@ struct EditPinScaling {
     }
     
     /// Return EditPointDragGesture.Value with DragGesture.Value.translation
-    var value: EditPinScaling.Value {
-        return EditPinScaling.Value(scaleValue: self.scaleValue,
+    var value: EditPointScaling.Value {
+        return EditPointScaling.Value(scaleValue: self.scaleValue,
                                       scaleSize: self.scaleSize)
     }
     
