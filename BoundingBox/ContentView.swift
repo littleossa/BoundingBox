@@ -46,5 +46,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        Image(systemName: "circle.fill")
+            .resizable()
+            .frame(width: 10, height: 10)
     }
 }
