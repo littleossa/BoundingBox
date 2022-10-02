@@ -7,23 +7,12 @@ import CoreGraphics
 
 struct EditPointScaling {
     
-    enum EditPointPlace {
-        case topLeft
-        case topCenter
-        case topRight
-        case middleLeft
-        case middleRight
-        case bottomLeft
-        case bottomCenter
-        case bottomRight
-    }
-    
     /// which points dragged on
-    let place: EditPointPlace
+    let place: EditPointPosition
     /// translation of DragGesture.Value
     let dragGestureTranslation: CGSize
     
-    init(with translation: CGSize, at place: EditPointPlace) {
+    init(with translation: CGSize, at place: EditPointPosition) {
         self.dragGestureTranslation = translation
         self.place = place
     }
