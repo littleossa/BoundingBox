@@ -9,7 +9,9 @@ struct MovingDashFramedRectangle: View {
     
     @State private var dashPhase: CGFloat = 0
     @State private var timerCount: CGFloat = 0
-    private let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 0.1,
+                                      on: .main,
+                                      in: .common).autoconnect()
     
     var body: some View {
         Rectangle()

@@ -9,7 +9,7 @@ struct EditPointsFramedRectangle: View {
     
     let width: CGFloat
     let height: CGFloat
-    let dragOnChangePinHandler: (_ value: EditPointScaling.Value) -> Void
+    let scaleChangeAction: (_ value: EditPointScaling.Value) -> Void
     
     var body: some View {
         
@@ -21,7 +21,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .topLeft) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -30,7 +30,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .topCenter) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -39,7 +39,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .topRight) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -48,7 +48,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .middleLeft) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -57,7 +57,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .middleRight) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -66,7 +66,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .bottomLeft) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -75,7 +75,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .bottomCenter) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
             
             //
@@ -84,7 +84,7 @@ struct EditPointsFramedRectangle: View {
             EditPoint(editingWidth: width,
                       editingHeight: height,
                       position: .bottomRight) { value in
-                dragOnChangePinHandler(value)
+                scaleChangeAction(value)
             }
         }
     }

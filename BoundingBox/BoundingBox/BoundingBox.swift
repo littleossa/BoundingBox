@@ -33,8 +33,8 @@ struct BoundingBox<Content: View>: View {
     @Binding var formType: EditFormType
     let content: Content
     
-    var minScalingWidth: CGFloat = 10
-    var minScalingHeight: CGFloat = 10
+    private let minScalingWidth: CGFloat = 10
+    private let minScalingHeight: CGFloat = 10
     
     private var dragGesture: some Gesture {
         DragGesture().onChanged { value in
@@ -51,7 +51,6 @@ struct BoundingBox<Content: View>: View {
                 ZStack {
                     
                     MovingDashFramedRectangle()
-                        .frame(width: editingWidth, height: editingHeight)
                     
                     EditPointsFramedRectangle(width: editingWidth,
                                               height: editingHeight) { value in
@@ -65,9 +64,6 @@ struct BoundingBox<Content: View>: View {
                             editingWidth += value.scaleSize.width
                             editingHeight += value.scaleSize.height
                             
-                            print(editingWidth)
-                            print(editingHeight)
-                            
                         case .uniform:
                             guard editingWidth + value.scaleValue > minScalingWidth,
                                   editingHeight + value.scaleValue > minScalingHeight
@@ -77,19 +73,19 @@ struct BoundingBox<Content: View>: View {
                             editingHeight += value.scaleValue
                         }
                     }
-                    .frame(width: editingWidth, height: editingHeight)
 
                     content
-                        .frame(width: editingWidth, height: editingHeight)
                 }
-                .frame(width: editingWidth, height: editingHeight)
+                .frame(width: editingWidth,
+                       height: editingHeight)
                 .position(editingPosition)
                 .gesture(dragGesture)
                 
             } else {
                 
                 content
-                    .frame(width: editingWidth, height: editingHeight)
+                    .frame(width: editingWidth,
+                           height: editingHeight)
                     .position(editingPosition)
             }
         }
