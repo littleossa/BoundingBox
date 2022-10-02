@@ -8,14 +8,9 @@ import CoreGraphics
 struct EditPointScaling {
     
     /// which points dragged on
-    let place: EditPointPosition
+    let position: EditPointPosition
     /// translation of DragGesture.Value
     let dragGestureTranslation: CGSize
-    
-    init(with translation: CGSize, at place: EditPointPosition) {
-        self.dragGestureTranslation = translation
-        self.place = place
-    }
     
     /// Return EditPointDragGesture.Value with DragGesture.Value.translation
     var value: EditPointScaling.Value {
@@ -26,7 +21,7 @@ struct EditPointScaling {
     /// How scale the size with the dragged edit point
     private var scaleSize: CGSize {
         
-        switch place {
+        switch position {
         case .topLeft:
             return CGSize(width: dragGestureTranslation.width * -1,
                           height: dragGestureTranslation.height * -1)
@@ -57,7 +52,7 @@ struct EditPointScaling {
     /// How scale the value with the dragged edit point.top center and bottom center return scaleSize height.
     private var scaleValue: CGFloat {
         
-        switch place {
+        switch position {
         case .topLeft, .topRight, .middleLeft, .middleRight, .bottomLeft, .bottomRight:
             return scaleSize.width
         case .topCenter, .bottomCenter:

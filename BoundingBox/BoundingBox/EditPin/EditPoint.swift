@@ -9,31 +9,37 @@ import SwiftUI
 
 struct EditPoint: View {
     
-    let dragOnChangeHandler: (_ value: DragGesture.Value) -> Void
+    let editingWidth: CGFloat
+    let editingHeight: CGFloat
+    let position: EditPointPosition
+    let scalingAction: (_ value: EditPointScaling.Value) -> Void
     
     var dragGesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                dragOnChangeHandler(value)
+                let editPointScaling = EditPointScaling(position: position,
+                                                        dragGestureTranslation: value.translation)
+                scalingAction(editPointScaling.value)
             }
     }
     
     var body: some View {
         ZStack {
-            Circle()
-                .foregroundColor(.white)
-                .shadow(radius: 1)
-                .frame(width: 10, height: 10)
-            Circle()
-                .foregroundColor(.accentColor)
-                .frame(width: 6, height: 6)
+            EditPointMark()
+                .gesture(dragGesture)
+                .offset(x: position.offset.x,
+                        y: position.offset.y)
         }
-        .gesture(dragGesture)
+        .frame(width: editingWidth,
+               height: editingHeight,
+               alignment: position.alignment)
     }
 }
 
 struct EditPoint_Previews: PreviewProvider {
     static var previews: some View {
-        EditPoint {_ in}
+        EditPoint(editingWidth: 100,
+                  editingHeight: 100,
+                  position: .topCenter) { _ in }
     }
 }
