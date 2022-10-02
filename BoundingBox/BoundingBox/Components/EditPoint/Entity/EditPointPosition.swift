@@ -37,23 +37,27 @@ enum EditPointPosition {
     }
     
     var offset: Offset {
+        
+        let editPointFrame = EditPointFrame()
+        let radius = editPointFrame.outerCircleRadius
+        
         switch self {
         case .topLeft:
-            return Offset(x: -5, y: -5)
+            return Offset(x: -radius, y: -radius)
         case .topCenter:
-            return Offset(x: 0, y: -5)
+            return Offset(x: 0, y: -radius)
         case .topRight:
-            return Offset(x: 5, y: -5)
+            return Offset(x: radius, y: -radius)
         case .middleLeft:
-            return Offset(x: -5, y: 0)
+            return Offset(x: -radius, y: 0)
         case .middleRight:
-            return Offset(x: 5, y: 0)
+            return Offset(x: radius, y: 0)
         case .bottomLeft:
-            return Offset(x: -5, y: 5)
+            return Offset(x: -radius, y: radius)
         case .bottomCenter:
-            return Offset(x: 0, y: 5)
+            return Offset(x: 0, y: radius)
         case .bottomRight:
-            return Offset(x: 5, y: 5)
+            return Offset(x: radius, y: radius)
         }
     }
     

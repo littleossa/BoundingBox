@@ -19,6 +19,7 @@
 		97DB3E4A28E47D54000F801E /* EditPointsFramedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB3E4928E47D54000F801E /* EditPointsFramedRectangle.swift */; };
 		97DB3E7328EA2186000F801E /* EditPointPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB3E7228EA2186000F801E /* EditPointPosition.swift */; };
 		97DB3E7528EA261C000F801E /* EditPointMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB3E7428EA261C000F801E /* EditPointMark.swift */; };
+		97DB3E7928EA2EA0000F801E /* EditPointFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB3E7828EA2EA0000F801E /* EditPointFrame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		97DB3E4928E47D54000F801E /* EditPointsFramedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointsFramedRectangle.swift; sourceTree = "<group>"; };
 		97DB3E7228EA2186000F801E /* EditPointPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointPosition.swift; sourceTree = "<group>"; };
 		97DB3E7428EA261C000F801E /* EditPointMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointMark.swift; sourceTree = "<group>"; };
+		97DB3E7828EA2EA0000F801E /* EditPointFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointFrame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		97DB3E7628EA2D6D000F801E /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				97DB3E7828EA2EA0000F801E /* EditPointFrame.swift */,
 				97DB3E7228EA2186000F801E /* EditPointPosition.swift */,
 				9741119F2803E6BD002A95E8 /* EditPointScaling.swift */,
 			);
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97DB3E7328EA2186000F801E /* EditPointPosition.swift in Sources */,
+				97DB3E7928EA2EA0000F801E /* EditPointFrame.swift in Sources */,
 				974111A02803E6BD002A95E8 /* EditPointScaling.swift in Sources */,
 				974111A22803F07F002A95E8 /* EditFormType.swift in Sources */,
 				9741118727FE7078002A95E8 /* ContentView.swift in Sources */,

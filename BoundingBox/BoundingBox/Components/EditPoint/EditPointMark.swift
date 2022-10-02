@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct EditPointMark: View {
+    
+    let editPointFrame = EditPointFrame()
+    
     var body: some View {
         ZStack {
             Circle()
                 .foregroundColor(.white)
                 .shadow(radius: 1)
-                .frame(width: 10, height: 10)
+                .frame(width: editPointFrame.outerCircleDiameter,
+                       height: editPointFrame.outerCircleDiameter)
             Circle()
                 .foregroundColor(.accentColor)
-                .frame(width: 6, height: 6)
+                .frame(width: editPointFrame.innerCircleDiameter,
+                       height: editPointFrame.innerCircleDiameter)
         }
     }
 }
