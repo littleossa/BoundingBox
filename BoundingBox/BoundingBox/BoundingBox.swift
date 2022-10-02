@@ -8,18 +8,18 @@ import SwiftUI
 // MARK: - Initializer
 extension BoundingBox {
     
-    init(isEditing: Binding<Bool>,
-         width: Binding<CGFloat>,
-         height: Binding<CGFloat>,
+    init(formType: EditFormType,
+        isEditing: Binding<Bool>,
+         editingWidth: Binding<CGFloat>,
+         editingHeight: Binding<CGFloat>,
          position: Binding<CGPoint>,
-         formType: Binding<EditFormType>,
          @ViewBuilder content: () -> Content) {
         
         _isEditing = isEditing
-        _editingWidth = width
-        _editingHeight = height
+        _editingWidth = editingWidth
+        _editingHeight = editingHeight
         _editingPosition = position
-        _formType = formType
+        self.formType = formType
         self.content = content()
     }
 }
@@ -30,7 +30,7 @@ struct BoundingBox<Content: View>: View {
     @Binding var editingWidth: CGFloat
     @Binding var editingHeight: CGFloat
     @Binding var editingPosition: CGPoint
-    @Binding var formType: EditFormType
+    let formType: EditFormType
     let content: Content
     
     private let minScalingWidth: CGFloat = 10
@@ -99,7 +99,7 @@ struct BoundingBox_Previews: PreviewProvider {
                     editingHeight: .constant(100),
                     editingPosition: .constant(CGPoint(x: 100,
                                                        y: 100)),
-                    formType: .constant(.freeForm), content: Image(systemName: "circle")
+                    formType: .freeForm, content: Image(systemName: "circle")
             .resizable()
         )
     }

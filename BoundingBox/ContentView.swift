@@ -16,11 +16,11 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-            BoundingBox(isEditing: $isEditing,
-                        width: $width,
-                        height: $height,
-                        position: $location,
-                        formType: $formType) {
+            BoundingBox(formType: formType,
+                        isEditing: $isEditing,
+                        editingWidth: $width,
+                        editingHeight: $height,
+                        position: $location) {
                 Image(systemName: "circle")
                     .resizable()
             }
