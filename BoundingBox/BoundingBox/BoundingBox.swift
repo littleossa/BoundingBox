@@ -9,7 +9,7 @@ import SwiftUI
 extension BoundingBox {
     
     init(formType: EditFormType,
-        isEditing: Binding<Bool>,
+         isEditing: Binding<Bool>,
          editingWidth: Binding<CGFloat>,
          editingHeight: Binding<CGFloat>,
          position: Binding<CGPoint>,
@@ -48,38 +48,36 @@ struct BoundingBox<Content: View>: View {
             
             if isEditing {
                 
-                ZStack {
-                    
-                    MovingDashFramedRectangle()
-                    
-                    EditPointsFramedRectangle(width: editingWidth,
-                                              height: editingHeight) { value in
+                content
+                    .overlay {
+                        MovingDashFramedRectangle()
                         
-                        switch formType {
-                        case .freeForm:
-                            guard editingWidth + value.scaleSize.width > minScalingWidth,
-                                  editingHeight + value.scaleSize.height > minScalingHeight
-                            else { return }
+                        EditPointsFramedRectangle(width: editingWidth,
+                                                  height: editingHeight) { value in
                             
-                            editingWidth += value.scaleSize.width
-                            editingHeight += value.scaleSize.height
-                            
-                        case .uniform:
-                            guard editingWidth + value.scaleValue > minScalingWidth,
-                                  editingHeight + value.scaleValue > minScalingHeight
-                            else { return }
-                            
-                            editingWidth += value.scaleValue
-                            editingHeight += value.scaleValue
+                            switch formType {
+                            case .freeForm:
+                                guard editingWidth + value.scaleSize.width > minScalingWidth,
+                                      editingHeight + value.scaleSize.height > minScalingHeight
+                                else { return }
+                                
+                                editingWidth += value.scaleSize.width
+                                editingHeight += value.scaleSize.height
+                                
+                            case .uniform:
+                                guard editingWidth + value.scaleValue > minScalingWidth,
+                                      editingHeight + value.scaleValue > minScalingHeight
+                                else { return }
+                                
+                                editingWidth += value.scaleValue
+                                editingHeight += value.scaleValue
+                            }
                         }
                     }
-
-                    content
-                }
-                .frame(width: editingWidth,
-                       height: editingHeight)
-                .position(editingPosition)
-                .gesture(dragGesture)
+                    .frame(width: editingWidth,
+                           height: editingHeight)
+                    .position(editingPosition)
+                    .gesture(dragGesture)
                 
             } else {
                 
