@@ -9,28 +9,29 @@ import SwiftUI
 extension BoundingBox {
     
     init(formType: EditFormType,
-         isEditing: Binding<Bool>,
+         isEditing: Bool,
          editingWidth: Binding<CGFloat>,
          editingHeight: Binding<CGFloat>,
          position: Binding<CGPoint>,
          @ViewBuilder content: () -> Content) {
         
-        _isEditing = isEditing
         _editingWidth = editingWidth
         _editingHeight = editingHeight
         _editingPosition = position
         self.formType = formType
+        self.isEditing = isEditing
+
         self.content = content()
     }
 }
 
 struct BoundingBox<Content: View>: View {
     
-    @Binding var isEditing: Bool
     @Binding var editingWidth: CGFloat
     @Binding var editingHeight: CGFloat
     @Binding var editingPosition: CGPoint
     let formType: EditFormType
+    let isEditing: Bool
     let content: Content
     
     private let minScalingWidth: CGFloat = 10
@@ -92,13 +93,14 @@ struct BoundingBox<Content: View>: View {
 
 struct BoundingBox_Previews: PreviewProvider {
     static var previews: some View {
-        BoundingBox(isEditing: .constant(true),
+        BoundingBox(formType: .freeForm,
+                    isEditing: true,
                     editingWidth: .constant(100),
                     editingHeight: .constant(100),
-                    editingPosition: .constant(CGPoint(x: 100,
-                                                       y: 100)),
-                    formType: .freeForm, content: Image(systemName: "circle")
-            .resizable()
-        )
+                    position: .constant(CGPoint(x: 100,
+                                                y: 100))) {
+            Image(systemName: "circle")
+                .resizable()
+        }
     }
 }

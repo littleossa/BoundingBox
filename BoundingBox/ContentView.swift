@@ -19,10 +19,10 @@ struct ContentView: View {
             Image(systemName: "nose")
                 .resizable()
                 .boundingBox(formType: formType,
-                                 isEditing: $isEditing,
-                                 editingWidth: $width,
-                                 editingHeight: $height,
-                                 position: $location)
+                             isEditing: isEditing,
+                             editingWidth: $width,
+                             editingHeight: $height,
+                             position: $location)
             
             HStack {
                 Button {

@@ -8,7 +8,7 @@ import SwiftUI
 extension View {
     
     func boundingBox(formType: EditFormType,
-                         isEditing: Binding<Bool>,
+                         isEditing: Bool,
                          editingWidth: Binding<CGFloat>,
                          editingHeight: Binding<CGFloat>,
                          position: Binding<CGPoint>) -> some View {
@@ -24,7 +24,7 @@ extension View {
 struct BondingBoxModifier: ViewModifier {
     
     let formType: EditFormType
-    @Binding var isEditing: Bool
+    let isEditing: Bool
     @Binding var width: CGFloat
     @Binding var height: CGFloat
     @Binding var position: CGPoint
@@ -32,7 +32,7 @@ struct BondingBoxModifier: ViewModifier {
     func body(content: Content) -> some View {
         
         BoundingBox(formType: formType,
-                    isEditing: $isEditing,
+                    isEditing: isEditing,
                     editingWidth: $width,
                     editingHeight: $height,
                     position: $position) {
