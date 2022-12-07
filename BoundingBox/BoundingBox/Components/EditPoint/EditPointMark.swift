@@ -2,14 +2,13 @@
 //  EditPointMark.swift
 //  BoundingBox
 //
-//  Created by 平岡修 on 2022/10/03.
 //
 
 import SwiftUI
 
 struct EditPointMark: View {
     
-    let editPointFrame = EditPointFrame()
+    private let editPointFrame = EditPointFrame()
     
     var body: some View {
         ZStack {

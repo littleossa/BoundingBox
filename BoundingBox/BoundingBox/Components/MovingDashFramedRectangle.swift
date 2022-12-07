@@ -27,5 +27,6 @@ struct MovingDashFramedRectangle: View {
 struct MovingDashFramedRectangle_Previews: PreviewProvider {
     static var previews: some View {
         MovingDashFramedRectangle()
+            .frame(width: 200, height: 200)
     }
 }

@@ -8,10 +8,10 @@ import SwiftUI
 extension View {
     
     func boundingBox(formType: EditFormType,
-                         isEditing: Bool,
-                         editingWidth: Binding<CGFloat>,
-                         editingHeight: Binding<CGFloat>,
-                         position: Binding<CGPoint>) -> some View {
+                     isEditing: Bool,
+                     editingWidth: Binding<CGFloat>,
+                     editingHeight: Binding<CGFloat>,
+                     position: Binding<CGPoint>) -> some View {
         
         self.modifier(BondingBoxModifier(formType: formType,
                                          isEditing: isEditing,
