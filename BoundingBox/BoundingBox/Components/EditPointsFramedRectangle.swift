@@ -15,76 +15,12 @@ struct EditPointsFramedRectangle: View {
         
         ZStack {
             
-            //
-            // Top Left Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .topLeft) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Top Center Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .topCenter) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Top Right Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .topRight) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Middle Left Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .middleLeft) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Middle Right Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .middleRight) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Bottom Left Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .bottomLeft) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Bottom Center Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .bottomCenter) { value in
-                scaleChangeAction(value)
-            }
-            
-            //
-            // Bottom Right Edit point
-            //
-            EditPoint(editingWidth: width,
-                      editingHeight: height,
-                      position: .bottomRight) { value in
-                scaleChangeAction(value)
+            ForEach(EditPointPosition.allCases) { position in
+                EditPoint(editingWidth: width,
+                          editingHeight: height,
+                          position: position) { value in
+                    scaleChangeAction(value)
+                }
             }
         }
     }

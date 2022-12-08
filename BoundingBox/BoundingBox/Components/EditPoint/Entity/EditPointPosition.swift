@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-enum EditPointPosition {
+enum EditPointPosition: String, CaseIterable, Identifiable {
     case topLeft
     case topCenter
     case topRight
@@ -14,6 +14,10 @@ enum EditPointPosition {
     case bottomLeft
     case bottomCenter
     case bottomRight
+    
+    var id: String {
+        return self.rawValue
+    }
     
     var alignment: Alignment {
         switch self {
